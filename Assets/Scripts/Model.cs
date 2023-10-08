@@ -1,11 +1,13 @@
-using UnityEngine.UI;
-
-namespace Vancheg
+namespace Vanchegs
 {
-    public class Model : IModelable
+    public class Model
     {
-        private View view;
         public int Score { get; set; }
-        public Text Text { get; set; }
+
+        public void ScoreIncrement()
+        {
+            Score++;
+        }
     }
 }
+

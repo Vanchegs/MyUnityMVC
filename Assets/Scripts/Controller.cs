@@ -1,16 +1,24 @@
+using System;
 using UnityEngine;
 
-namespace Vancheg
+namespace Vanchegs
 {
-    public class Controller : MonoBehaviour, IControllable
+    public class Controller : MonoBehaviour
     {
-        private Model model;
         private View view;
-        
+        private Model model;
+
+        private void Start()
+        {
+            model = new Model();
+            view = GetComponent<View>();
+            view.SetModel(model);
+        }
+
         public void OnClick()
         {
-            view.ColorChange();
-            view.ScoreChange();
+            view.ViewScore();
+            view.RandomColorChange();
         }
     }
 }

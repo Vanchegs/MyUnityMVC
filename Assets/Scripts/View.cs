@@ -1,36 +1,48 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace Vancheg
+namespace Vanchegs
 {
-    public class View : IViewable
+    public class View : MonoBehaviour
     {
-        private Model model;
+        [SerializeField] private Text scoreText;
         
-        public void ScoreChange()
+        private Model model;
+
+        public void SetModel(Model model)
         {
-            model.Score++;
+            this.model = model;
         }
 
-        public void ColorChange()
+        public void ViewScore()
         {
-            var rndColor = Random.Range(0, 2);
+            model.ScoreIncrement();
+            scoreText.text = "Score: " + model.Score;
+        }
+
+        public void RandomColorChange()
+        {
+            var rndColor = Random.Range(0, 3);
 
             switch (rndColor)
             {
                 case 0:
-                    model.Text.color = Color.black;
+                    scoreText.color = Color.yellow;
                     break;
                 case 1:
-                    model.Text.color = Color.cyan;
+                    scoreText.color = Color.green;
                     break;
                 case 2:
-                    model.Text.color = Color.green;
+                    scoreText.color = Color.blue;
                     break;
-                default:
-                    model.Text.color = Color.white;
+                case 3:
+                    scoreText.color = Color.red;
+                    break;
+                default: 
+                    scoreText.color = Color.black;
                     break;
             }
-            
         }
     }
 }
+
